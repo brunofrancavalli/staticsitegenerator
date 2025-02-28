@@ -16,4 +16,8 @@ class TextNode:
     def __eq__():
         return TRUE
     
+    def __repr__(self):
+        return f"TextNode({self.text}, {self.text_type}, {self.url})"
+    
+
     
