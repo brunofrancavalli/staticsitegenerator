@@ -25,7 +25,7 @@ class TestHtmlNode(unittest.TestCase):
 
         html_code = html_node.props_to_html()
 
-        self.assertEqual(html_code == '')
+        self.assertEqual(html_code, '')
 
 if __name__ == "__main__":
 
