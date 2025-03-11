@@ -42,7 +42,10 @@ class TestParentNode(unittest.TestCase):
             value = parent_node.to_html()
 
     def test_to_html_no_children(self):
-        parent_node = ParentNode("p", [grandchild_node])
+        parent_node = ParentNode("p", None)
 
         with self.assertRaises(ValueError):
             value = parent_node.to_html()
+            
+if __name__ == "__main__":
+    unittest.main()

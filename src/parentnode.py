@@ -10,9 +10,9 @@ class ParentNode(HtmlNode):
         if self.children is None:
             raise ValueError("missing children")
         
-        html_code = f"<{tag}>"
-        for child in children:
+        html_code = f"<{self.tag}>"
+        for child in self.children:
             html_code += child.to_html()
-        html_code += f"</{tag}>"
+        html_code += f"</{self.tag}>"
 
         return html_code
