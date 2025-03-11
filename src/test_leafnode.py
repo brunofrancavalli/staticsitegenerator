@@ -12,6 +12,11 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode(None, "Hello, world!")
         html_code = node.to_html()
         self.assertEqual(html_code, "Hello, world!")
+    
+    def test_leaf_to_html_none_value_exception(self):
+        node = LeafNode("p", None)
+        with self.assertRaises(ValueError):
+            node.to_html()
 
 if __name__ == "__main__":
 
