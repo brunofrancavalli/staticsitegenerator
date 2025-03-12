@@ -1,6 +1,6 @@
-from htmlnode import HtmlNode
+from node_html import NodeHtml
 
-class ParentNode(HtmlNode):
+class NodeParent(NodeHtml):
     def __init__(self, tag, children,props = None):
         super().__init__(tag, None, children, props)
     

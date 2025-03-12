@@ -1,6 +1,6 @@
-from textnode import TextNode
+from node_text import NodeText
 def main():
-    textnode = TextNode("This is a text node", "bold", "https://www.boot.dev")
+    textnode = NodeText("This is a text node", "bold", "https://www.boot.dev")
     print(textnode)
 
 main()

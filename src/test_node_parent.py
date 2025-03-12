@@ -1,19 +1,19 @@
 import unittest
 
-from parentnode import ParentNode
-from leafnode import LeafNode
+from node_parent import NodeParent
+from node_leaf import NodeLeaf
 
-class TestParentNode(unittest.TestCase):
+class TestNodeParent(unittest.TestCase):
     def test_to_html_with_children(self):
-        child_node = LeafNode("span", "child")
-        parent_node = ParentNode("div", [child_node])
+        child_node = NodeLeaf("span", "child")
+        parent_node = NodeParent("div", [child_node])
 
         self.assertEqual(parent_node.to_html(), "<div><span>child</span></div>")
 
     def test_to_html_with_grandchildren(self):
-        grandchild_node = LeafNode("b", "grandchild")
-        child_node = ParentNode("span", [grandchild_node])
-        parent_node = ParentNode("div", [child_node])
+        grandchild_node = NodeLeaf("b", "grandchild")
+        child_node = NodeParent("span", [grandchild_node])
+        parent_node = NodeParent("div", [child_node])
 
         self.assertEqual(
             parent_node.to_html(),
@@ -21,13 +21,13 @@ class TestParentNode(unittest.TestCase):
         )
 
     def test_multiple_childre(self):
-        node = ParentNode(
+        node = NodeParent(
             "p",
             [
-                LeafNode("b", "Bold text"),
-                LeafNode(None, "Normal text"),
-                LeafNode("i", "italic text"),
-                LeafNode(None, "Normal text"),
+                NodeLeaf("b", "Bold text"),
+                NodeLeaf(None, "Normal text"),
+                NodeLeaf("i", "italic text"),
+                NodeLeaf(None, "Normal text"),
             ],
         )
         
@@ -35,14 +35,14 @@ class TestParentNode(unittest.TestCase):
         self.assertEqual(html_code, "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>")
 
     def test_to_html_no_tag(self):
-        grandchild_node = LeafNode("b", "grandchild")
-        parent_node = ParentNode(None, [grandchild_node])
+        grandchild_node = NodeLeaf("b", "grandchild")
+        parent_node = NodeParent(None, [grandchild_node])
 
         with self.assertRaises(ValueError):
             value = parent_node.to_html()
 
     def test_to_html_no_children(self):
-        parent_node = ParentNode("p", None)
+        parent_node = NodeParent("p", None)
 
         with self.assertRaises(ValueError):
             value = parent_node.to_html()

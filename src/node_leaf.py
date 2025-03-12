@@ -1,6 +1,6 @@
-from htmlnode import HtmlNode
+from node_html import NodeHtml
 
-class LeafNode(HtmlNode):
+class NodeLeaf(NodeHtml):
     def __init__(self, tag, value, props = None):
         super().__init__(tag, value, props)
 
