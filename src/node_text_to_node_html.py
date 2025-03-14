@@ -21,8 +21,8 @@ def text_node_to_html_node(node_text:NodeText):
     elif node_text.text_type == TextType.CODE:
         return NodeLeaf(HtmlTagType.CODE, node_text.text)
     elif node_text.text_type == TextType.LINK:
-        return NodeLeaf(HtmlTagType.LINK, node_text.text, f"href={node_text.url}")
+        return NodeLeaf(HtmlTagType.LINK, node_text.text, [(f"href",node_text.url)])
     elif node_text.text_type == TextType.IMAGE:
-        return NodeLeaf(HtmlTagType.IMAGE, None, f"src={node_text.url} alt={node_text.text}")
+        return NodeLeaf(HtmlTagType.IMAGE, None, [("src",node_text.url), ("alt",node_text.text)])
     else:
         raise ValueError(f"Invalid TextType option {node_text.text_type}")

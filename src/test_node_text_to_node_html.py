@@ -47,8 +47,8 @@ class TestNodeTextToNodeHtml(unittest.TestCase):
         node = NodeText(text, TextType.IMAGE, link)
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, HtmlTagType.IMAGE)
-        self.assertEqual(html_node.value, text)
-        self.assertEqual(html_node.props, "src={node.url} alt={node.text}")
+        self.assertEqual(html_node.value, None)
+        self.assertEqual(html_node.props, [("src",node.url),("alt",node.text)])
 
 if __name__ == "__main__":
     unittest.main()
