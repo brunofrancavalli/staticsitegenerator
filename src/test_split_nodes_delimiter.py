@@ -19,15 +19,30 @@ class TestSplitNodesDelimiter(unittest.TestCase):
         new_nodes = split_nodes_delimiter([node], "_", TextType.ITALIC)
         self.assertListEqual( new_nodes,[NodeText("This is text with a ", TextType.TEXT),NodeText("code block", TextType.ITALIC),NodeText(" word", TextType.TEXT)])
     
-    def test_default_code_atstart(self):
+    def test_default_code_at_start(self):
         node = NodeText("`code block` word", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
         self.assertListEqual( new_nodes,[NodeText("code block", TextType.CODE),NodeText(" word", TextType.TEXT)])
 
-    def test_default_code_atend(self):
+    def test_default_code_at_end(self):
         node = NodeText("This is text with a `code block`", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
         self.assertListEqual( new_nodes,[NodeText("This is text with a ", TextType.TEXT),NodeText("code block", TextType.CODE)])
+
+    def test_default_code_with_spaces_at_start(self):
+        node = NodeText("  `code block` word", TextType.TEXT)
+        new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
+        self.assertListEqual( new_nodes,[NodeText("  ", TextType.TEXT),NodeText("code block", TextType.CODE),NodeText(" word", TextType.TEXT)])
+
+    def test_default_code_with_spaces_at_end(self):
+        node = NodeText("This is text with a `code block`  ", TextType.TEXT)
+        new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
+        self.assertListEqual( new_nodes,[NodeText("This is text with a ", TextType.TEXT),NodeText("code block", TextType.CODE),NodeText("  ", TextType.TEXT)])
+
+    def test_default_code_no_closing_delimiter(self):
+        node = NodeText("This is text with a `code block word", TextType.TEXT)
+        new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
+        self.assertListEqual( new_nodes,[NodeText("This is text with a ", TextType.TEXT),NodeText("code block word", TextType.CODE)])
 
 if __name__ == "__main__":
     unittest.main()
