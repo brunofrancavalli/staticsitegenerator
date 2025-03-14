@@ -13,7 +13,7 @@ class HtmlTagType(Enum):
 
 def text_node_to_html_node(node_text:NodeText):
     if node_text.text_type == TextType.TEXT:
-        return NodeLeaf(None,node_text.text)
+        return NodeLeaf(HtmlTagType.TEXT,node_text.text)
     elif node_text.text_type == TextType.BOLD:
         return NodeLeaf(HtmlTagType.BOLD, node_text.text)
     elif node_text.text_type == TextType.ITALIC:
