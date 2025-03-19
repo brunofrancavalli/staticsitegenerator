@@ -1,13 +1,14 @@
 import re
 
 from extract_markdown_images import extract_markdown_images
+from extract_markdown_links import extract_markdown_links
 from node_text import NodeText, TextType
 
 def split_nodes_image(old_node_list):
-    return split_nodes_start_mid_end(old_node_list, "![", "](", ")")
+    return split_nodes_start_mid_end(old_node_list, extract_markdown_images, "![", "](", ")")
 
 def split_nodes_link(old_node_list):
-    return split_nodes_start_mid_end(old_node_list, "[", "](", ")")
+    return split_nodes_start_mid_end(old_node_list, extract_markdown_links, "[", "](", ")")
 
 def split_nodes_delimiter(old_node_list, delimiter, text_type):
     for old_node_item in old_node_list:
@@ -26,11 +27,11 @@ def split_nodes_delimiter(old_node_list, delimiter, text_type):
     
     return new_nodes
 
-def split_nodes_start_mid_end(old_node_list, start_delimiter, mid_delimiter, end_delimiter):
+def split_nodes_start_mid_end(old_node_list, extract_markdown, start_delimiter, mid_delimiter, end_delimiter):
     node_return = []
     for old_node in old_node_list:
         old_node_text = old_node.text
-        node_image_list = extract_markdown_images(old_node_text)
+        node_image_list = extract_markdown(old_node_text)
         if len(node_image_list) > 0:
             for node_image in node_image_list:
                 find_value = f"{start_delimiter}{node_image[0]}{mid_delimiter}{node_image[1]}{end_delimiter}"
