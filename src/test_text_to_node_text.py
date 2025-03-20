@@ -22,6 +22,30 @@ class TestTextToNodeText(unittest.TestCase):
                 NodeText(" and a ", TextType.TEXT),
                 NodeText("link", TextType.LINK, "https://boot.dev")
             ])
+        
+    def test_text_to_text_node_bold_inside_code(self):
+        text = "text before `code block **bold should not work**` text after"
+
+        node_text_list = text_to_node_text(text)
+
+        self.assertEqual(node_text_list,
+            [
+                NodeText("text before ", TextType.TEXT),
+                NodeText("code block **bold should not work**", TextType.CODE),
+                NodeText(" text after", TextType.TEXT),
+            ])
+        
+    def test_text_to_text_node_link_inside_code(self):
+        text = "text before `code block [should not link](https://boot.dev)` text after"
+
+        node_text_list = text_to_node_text(text)
+
+        self.assertEqual(node_text_list,
+            [
+                NodeText("text before ", TextType.TEXT),
+                NodeText("code block [should not link](https://boot.dev)", TextType.CODE),
+                NodeText(" text after", TextType.TEXT),
+            ])
 
 if __name__ == "__main__":
     unittest.main()

@@ -25,7 +25,7 @@ class TestSplitNodesImage(unittest.TestCase):
         new_nodes = split_nodes_link([node])
         self.assertListEqual(
             [
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png")
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png")
             ],
             new_nodes,
         )
@@ -39,7 +39,7 @@ class TestSplitNodesImage(unittest.TestCase):
         self.assertListEqual(
             [
                 NodeText("This is text with an ", TextType.TEXT),
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png")
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png")
             ],
             new_nodes,
         )
@@ -52,7 +52,7 @@ class TestSplitNodesImage(unittest.TestCase):
         new_nodes = split_nodes_link([node])
         self.assertListEqual(
             [
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
                 NodeText(" no more links", TextType.TEXT)
             ],
             new_nodes,
@@ -67,7 +67,7 @@ class TestSplitNodesImage(unittest.TestCase):
         self.assertListEqual(
             [
                 NodeText("This is text with an ", TextType.TEXT),
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
                 NodeText(" no more links", TextType.TEXT)
             ],
             new_nodes,
@@ -81,8 +81,8 @@ class TestSplitNodesImage(unittest.TestCase):
         new_nodes = split_nodes_link([node])
         self.assertListEqual(
             [
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png")
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png")
             ],
             new_nodes,
         )
@@ -95,9 +95,9 @@ class TestSplitNodesImage(unittest.TestCase):
         new_nodes = split_nodes_link([node])
         self.assertListEqual(
             [
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
                 NodeText(" and another ", TextType.TEXT),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png")
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png")
             ],
             new_nodes,
         )
@@ -111,8 +111,8 @@ class TestSplitNodesImage(unittest.TestCase):
         self.assertListEqual(
             [
                 NodeText("This is text with an ", TextType.TEXT),
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png")
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png")
             ],
             new_nodes,
         )
@@ -125,8 +125,8 @@ class TestSplitNodesImage(unittest.TestCase):
         new_nodes = split_nodes_link([node])
         self.assertListEqual(
             [
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png"),
                 NodeText(" no more links", TextType.TEXT)
             ],
             new_nodes,
@@ -142,9 +142,9 @@ class TestSplitNodesImage(unittest.TestCase):
         self.assertListEqual(
             [
                 NodeText("This is text with an ", TextType.TEXT),
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
                 NodeText(" and another ", TextType.TEXT),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"),
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png"),
                 NodeText(" no more links", TextType.TEXT)
             ],
             new_nodes,
@@ -159,9 +159,9 @@ class TestSplitNodesImage(unittest.TestCase):
         self.assertListEqual(
             [
                 NodeText("This is text with an ", TextType.TEXT),
-                NodeText("link", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                NodeText("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
                 NodeText(" and another ", TextType.TEXT),
-                NodeText("second link", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"),
+                NodeText("second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png"),
             ],
             new_nodes,
         )
