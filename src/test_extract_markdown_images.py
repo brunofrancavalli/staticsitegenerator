@@ -1,6 +1,6 @@
 import unittest
 
-from extract_markdown_images import extract_markdown_images
+from extract_markdown import extract_markdown_images
 
 class test_extract_markdown_images(unittest.TestCase):
     def test_url_rickroll_2entries(self):
