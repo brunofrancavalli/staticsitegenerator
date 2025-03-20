@@ -1,7 +1,6 @@
 import re
 
-from extract_markdown_images import extract_markdown_images
-from extract_markdown_links import extract_markdown_links
+from extract_markdown import extract_markdown_images, extract_markdown_links
 from node_text import NodeText, TextType
 
 def split_nodes_image(old_node_list):

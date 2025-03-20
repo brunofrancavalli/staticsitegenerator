@@ -1,6 +1,6 @@
 import unittest
 
-from extract_markdown_links import extract_markdown_links
+from extract_markdown import extract_markdown_links
 
 class test_extract_markdown_links(unittest.TestCase):
     def test_url_link_2entries(self):
