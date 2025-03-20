@@ -1,14 +1,15 @@
 import unittest
 
 from node_text import TextType, NodeText
+from text_to_node_text import text_to_node_text
 
-class TestTextToTextNode(unittest.TestCase):
+class TestTextToNodeText(unittest.TestCase):
     def test_text_to_text_node_default(self):
         text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
 
-        text_node_list = text_to_text_node(text)
+        node_text_list = text_to_node_text(text)
 
-        self.assertEqual(text_node_list,
+        self.assertEqual(node_text_list,
             [
                 NodeText("This is ", TextType.TEXT),
                 NodeText("text", TextType.BOLD),
