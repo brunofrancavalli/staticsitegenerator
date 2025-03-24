@@ -11,7 +11,7 @@ class HtmlTagType(Enum):
     IMAGE = "img"
     TEXT = None
 
-def text_node_to_html_node(node_text:NodeText):
+def node_text_to_node_html(node_text:NodeText):
     if node_text.text_type == TextType.TEXT:
         return NodeLeaf(HtmlTagType.TEXT,node_text.text)
     elif node_text.text_type == TextType.BOLD:

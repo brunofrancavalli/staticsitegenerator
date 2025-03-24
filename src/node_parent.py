@@ -1,7 +1,7 @@
 from node_html import NodeHtml
 
 class NodeParent(NodeHtml):
-    def __init__(self, tag, children,props = None):
+    def __init__(self, tag, children, props = None):
         super().__init__(tag, None, children, props)
     
     def to_html(self):
