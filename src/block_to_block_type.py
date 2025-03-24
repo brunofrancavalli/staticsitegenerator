@@ -12,16 +12,15 @@ def block_to_block_type(text):
     elif re.match(r"- ", text):
         return BlockType.UNORDERED_LIST
     elif re.match(r"^[0-9]+\. ", text):
-        groups = re.findall(r"^((1). .*(\n(\d+). .*)*)", text)
+        lines = text.split('\n')
         count = 1
         increasing_count = True
-        # must be increasing and first number is 1
-        for group in groups:
-            if int(group[0]) != count:
+        for line in lines:
+            groups = re.findall(r"^(([0-9]+)\. .*)", line)
+            if int(groups[0][1]) != count:
                 increasing_count = False
                 break
             count += 1
-        
         if increasing_count:
             return BlockType.ORDERED_LIST
         else:
