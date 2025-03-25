@@ -9,9 +9,9 @@ class NodeLeaf(NodeHtml):
             raise ValueError
         html_string = ""
         if self.tag is not None:
-            html_string += f"<{self.tag}>"
+            html_string += f"<{self.tag.value}>"
         html_string += self.value
         if self.tag is not None:
-            html_string += f"</{self.tag}>"
+            html_string += f"</{self.tag.value}>"
 
         return html_string

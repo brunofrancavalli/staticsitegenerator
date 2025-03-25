@@ -9,7 +9,7 @@ class HtmlTagType(Enum):
     CODE = "code"
     LINK = "a"
     IMAGE = "img"
-    TEXT = None
+    TEXT = "p"
 
 def node_text_to_node_html(node_text:NodeText):
     if node_text.text_type == TextType.TEXT:
