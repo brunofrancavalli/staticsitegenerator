@@ -13,6 +13,8 @@ def markdown_to_html_node(markdown):
     for block in blocks:
         block_type = block_to_block_type(block)
         if block_type == BlockType.CODE:
+            block = block.strip('`').lstrip('\n')
+            block = "`" + block + "`"
             node_text_list = text_to_node_text(block)
         elif block_type == BlockType.HEADING:
             node_text_list = text_to_node_text(block)

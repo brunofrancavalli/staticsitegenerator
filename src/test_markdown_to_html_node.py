@@ -1,4 +1,4 @@
-import unittest
+import unittest, re
 
 from markdown_to_html_node import markdown_to_html_node
 
@@ -34,4 +34,5 @@ the **same** even with inline stuff
         )
 
 if __name__ == "__main__":
+    
     unittest.main()
