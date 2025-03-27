@@ -8,10 +8,15 @@ class NodeLeaf(NodeHtml):
         if self.value is None:
             raise ValueError
         html_string = ""
-        if self.tag is not None:
+
+        # open tag if one exist
+        if self.tag.value:
             html_string += f"<{self.tag.value}>"
+        # middle part
         html_string += self.value
-        if self.tag is not None:
+
+        # close tag if one exist
+        if self.tag.value:
             html_string += f"</{self.tag.value}>"
 
         return html_string

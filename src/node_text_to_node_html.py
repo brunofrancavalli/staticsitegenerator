@@ -9,11 +9,12 @@ class HtmlTagType(Enum):
     CODE = "code"
     LINK = "a"
     IMAGE = "img"
-    TEXT = "p"
+    TEXT = ""
 
 def node_text_to_node_html(node_text:NodeText):
     if node_text.text_type == TextType.TEXT:
-        return NodeLeaf(HtmlTagType.TEXT,node_text.text)
+        text = node_text.text.replace("\n"," ")
+        return NodeLeaf(HtmlTagType.TEXT, text)
     elif node_text.text_type == TextType.BOLD:
         return NodeLeaf(HtmlTagType.BOLD, node_text.text)
     elif node_text.text_type == TextType.ITALIC:
