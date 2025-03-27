@@ -10,13 +10,13 @@ class NodeLeaf(NodeHtml):
         html_string = ""
 
         # open tag if one exist
-        if self.tag.value:
-            html_string += f"<{self.tag.value}>"
+        if self.tag is not None and self.tag:
+            html_string += f"<{self.tag}>"
         # middle part
         html_string += self.value
 
         # close tag if one exist
-        if self.tag.value:
-            html_string += f"</{self.tag.value}>"
+        if self.tag is not None and self.tag:
+            html_string += f"</{self.tag}>"
 
         return html_string

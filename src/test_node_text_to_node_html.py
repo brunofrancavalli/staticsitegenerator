@@ -8,28 +8,28 @@ class TestNodeTextToNodeHtml(unittest.TestCase):
         text = "This is a text node"
         node = NodeText(text, TextType.TEXT)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.TEXT)
+        self.assertEqual(html_node.tag, HtmlTagType.TEXT.value)
         self.assertEqual(html_node.value, text)
 
     def test_bold(self):
         text = "This is a text node"
         node = NodeText(text, TextType.BOLD)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.BOLD)
+        self.assertEqual(html_node.tag, HtmlTagType.BOLD.value)
         self.assertEqual(html_node.value, text)
 
     def test_italic(self):
         text = "This is a italic node"
         node = NodeText(text, TextType.ITALIC)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.ITALIC)
+        self.assertEqual(html_node.tag, HtmlTagType.ITALIC.value)
         self.assertEqual(html_node.value, text)
 
     def test_code(self):
         text = "This is a code node"
         node = NodeText(text, TextType.CODE)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.CODE)
+        self.assertEqual(html_node.tag, HtmlTagType.CODE.value)
         self.assertEqual(html_node.value, text)
 
     def test_link(self):
@@ -37,7 +37,7 @@ class TestNodeTextToNodeHtml(unittest.TestCase):
         link = "http://www.google.com"
         node = NodeText(text, TextType.LINK, link)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.LINK)
+        self.assertEqual(html_node.tag, HtmlTagType.LINK.value)
         self.assertEqual(html_node.value, text)
         self.assertEqual(html_node.props, [("href",node.url)])
 
@@ -46,7 +46,7 @@ class TestNodeTextToNodeHtml(unittest.TestCase):
         link = "http://www.google.com"
         node = NodeText(text, TextType.IMAGE, link)
         html_node = node_text_to_node_html(node)
-        self.assertEqual(html_node.tag, HtmlTagType.IMAGE)
+        self.assertEqual(html_node.tag, HtmlTagType.IMAGE.value)
         self.assertEqual(html_node.value, None)
         self.assertEqual(html_node.props, [("src",node.url),("alt",node.text)])
 
