@@ -14,7 +14,11 @@ class NodeParent(NodeHtml):
         html_code = f"<{self.tag}>"
 
         for child in self.children:
-            html_code += child.to_html()
+            if isinstance(child, list):
+                for sub_child in child:
+                    html_code += sub_child
+            else:
+                html_code += child.to_html()
 
         html_code += f"</{self.tag}>"
 
