@@ -9,7 +9,7 @@ def extract_markdown(text, regex_string):
     return result
 
 def extract_markdown_images(text):
-    return extract_markdown(text, r"!\[([a-z ]+)\]\(([a-zA-Z0-9\./:@]+)\)")
+    return extract_markdown(text, r"!\[([a-zA-Z ]+)\]\(([a-zA-Z0-9\./:@]+)\)")
 
 def extract_markdown_links(text):
-    return extract_markdown(text, r"\[([a-z ]+)\]\(([a-zA-Z0-9\./:@]+)\)")
+    return extract_markdown(text, r"\[([a-zA-Z ]+)\]\(([a-zA-Z0-9\./:@]+)\)")

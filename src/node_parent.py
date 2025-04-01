@@ -5,7 +5,7 @@ class NodeParent(NodeHtml):
     def __init__(self, tag, children, props = None):
         super().__init__(tag, None, children, props)
     
-    def to_html(self):
+    def to_html(self:NodeHtml):
         if self.tag is None:
             raise ValueError("missing tag value")
         if self.children is None:
@@ -16,7 +16,7 @@ class NodeParent(NodeHtml):
         for child in self.children:
             if isinstance(child, list):
                 for sub_child in child:
-                    html_code += sub_child
+                    html_code += sub_child.to_html()
             else:
                 html_code += child.to_html()
 
